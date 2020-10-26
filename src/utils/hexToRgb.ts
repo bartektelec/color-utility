@@ -1,22 +1,18 @@
-import { stringify } from 'querystring';
-
 export default function hexToRgb(hex: string) {
-  const hexValueReg = /\w+/;
-  const values = hexValueReg.exec(hex);
-  if (!values) {
-    throw new Error('No valid value provided');
+  const splittedHex = hex.match(/\w{2}/g);
+  if (!splittedHex) {
+    throw new Error('No valid value read');
   }
-  const [parsedHex] = values;
-  let fullHex = parsedHex;
-  let fullAlphaHex = fullHex;
-  if (parsedHex.length < 6) {
-    // TODO convert to double digit
-    fullHex = fullHex.split('').reduce((acc, curr) => acc + curr + curr, '');
-  }
-  if (stringify.length <= 6) {
-    // TODO add alpha channel
-    fullAlphaHex = fullHex + 'ff';
-  }
+  const [r, g, b, a] = splittedHex;
+  const red = parseInt(r, 16);
+  const green = parseInt(g, 16);
+  const blue = parseInt(b, 16);
+  const alpha = parseInt(a, 16) / 255;
 
-  return { hex: fullHex, hexa: fullAlphaHex };
+  return {
+    red,
+    green,
+    blue,
+    alpha,
+  };
 }

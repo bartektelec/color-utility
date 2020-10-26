@@ -124,12 +124,57 @@ describe('Test Color utility', () => {
   describe('Can convert values', () => {
     const color = new Color();
     xit('from RGB', () => {
+      const colors = [
+        {
+          rgb: [255, 255, 255],
+          hex: 'ffffff',
+        },
+        {
+          rgb: [111, 160, 83],
+          hex: '6fa053',
+        },
+        {
+          rgb: [150, 83, 160],
+          hex: '9653a0',
+        },
+      ];
+
+      colors.forEach(colorObject => {
+        const [r, g, b] = colorObject.rgb;
+        color.setRGB(r, g, b);
+        expect(color.red).toEqual(r);
+        expect(color.green).toEqual(g);
+        expect(color.blue).toEqual(b);
+        expect(color.hex).toEqual(colorObject.hex);
+      });
       // TODO expect HEX
       // TODO expect HSL
       // TODO expect HSB
     });
-    xit('from HEX', () => {
+    it('from HEX', () => {
       // TODO expect RGB
+      const colors = [
+        {
+          rgb: [255, 255, 255],
+          hex: 'ffffff',
+        },
+        {
+          rgb: [111, 160, 83],
+          hex: '6fa053',
+        },
+        {
+          rgb: [150, 83, 160],
+          hex: '9653a0',
+        },
+      ];
+
+      colors.forEach(colorObject => {
+        const [r, g, b] = colorObject.rgb;
+        color.setHex(colorObject.hex);
+        expect(color.red).toEqual(r);
+        expect(color.green).toEqual(g);
+        expect(color.blue).toEqual(b);
+      });
       // TODO expect HSL
       // TODO expect HSB
     });

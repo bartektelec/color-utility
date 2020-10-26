@@ -1,3 +1,4 @@
+import prettifyHex from './utils/prettifyHex';
 import hexToRgb from './utils/hexToRgb';
 
 export default class Color {
@@ -11,9 +12,43 @@ export default class Color {
   private _brightness: number;
   private _hex: string;
   private _hexa: string;
-  constructor() {}
 
-  // getters
+  // SECTION Constructor
+  constructor() {
+    // TODO make able to set value in constructor
+  }
+
+  // SECTION Helper functions
+  private calcFromRGB() {
+    // TODO calc hex
+    // TODO calc hsl
+    // TODO calc hsb
+  }
+
+  private calcFromHex() {
+    // TODO calc RGB
+    const { red, green, blue, alpha } = hexToRgb(this._hexa);
+    this._red = red;
+    this._green = green;
+    this._blue = blue;
+    this._alpha = alpha;
+    // TODO calc hsl
+    // TODO calc hsb
+  }
+
+  private calcFromHSL() {
+    // TODO calc RGB
+    // TODO calc Hex
+    // TODO calc hsb
+  }
+
+  private calcFromHSB() {
+    // TODO calc RGB
+    // TODO calc Hex
+    // TODO calc HSL
+  }
+
+  // SECTION Getter functions
   public get red() {
     return this._red;
   }
@@ -66,18 +101,22 @@ export default class Color {
     return this._hexa;
   }
 
+  // SECTION Setter functions
   public setRGB(r: number, g: number, b: number, a: number = 1) {
     this._red = r;
     this._green = g;
     this._blue = b;
     this._alpha = a;
+    this.calcFromRGB();
     return this;
   }
 
   public setHex(hexInput: string) {
-    const { hex, hexa } = hexToRgb(hexInput);
+    const { hex, hexa } = prettifyHex(hexInput);
     this._hex = hex;
     this._hexa = hexa;
+    this.calcFromHex();
+    return this;
   }
 
   public setHSL() {
