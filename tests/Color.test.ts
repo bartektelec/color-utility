@@ -26,6 +26,7 @@ describe('Test Color utility', () => {
         '#ccc': 'cccccc',
         '#ababab': 'ababab',
         abcabc: 'abcabc',
+        '333': '333333',
       };
       Object.keys(hexColors).forEach(key => {
         color.setHex(key);
