@@ -67,6 +67,18 @@ export default class Color {
 
   public setHex(hex: string) {
     const hexValueReg = /\w+/;
-    const [parsedHex] = hexValueReg.exec(hex);
+    const values = hexValueReg.exec(hex);
+    if (!values) {
+      throw new Error('No valid value provided');
+    }
+    const [parsedHex] = values;
+  }
+
+  public setHSL() {
+    // TODO
+  }
+
+  public setHSB() {
+    // TODO
   }
 }
