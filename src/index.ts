@@ -1,5 +1,6 @@
 import prettifyHex from './utils/prettifyHex';
 import hexToRgb from './utils/hexToRgb';
+import rgbToHex from './utils/rgbToHex';
 
 export default class Color {
   private _red: number;
@@ -21,6 +22,14 @@ export default class Color {
   // SECTION Helper functions
   private calcFromRGB() {
     // TODO calc hex
+    const { hex, hexa } = rgbToHex(
+      this._red,
+      this._green,
+      this._blue,
+      this._alpha
+    );
+    this._hex = hex;
+    this._hexa = hexa;
     // TODO calc hsl
     // TODO calc hsb
   }

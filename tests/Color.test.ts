@@ -123,7 +123,7 @@ describe('Test Color utility', () => {
 
   describe('Can convert values', () => {
     const color = new Color();
-    xit('from RGB', () => {
+    it('from RGB', () => {
       const colors = [
         {
           rgb: [255, 255, 255],
