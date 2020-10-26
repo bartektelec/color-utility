@@ -20,11 +20,17 @@ describe('Test Color utility', () => {
         expect(color.alpha).toEqual(1);
       });
     });
-    xit('Can set HEX value with no alpha set', () => {
-      const hexColors = ['#ff00bb', '#ccc', '#ababab', 'abcabc'];
-      hexColors.forEach(value => {
-        color.setHex(value);
-        expect(color.hex).toEqual(value);
+    it('Can set HEX value with no alpha set', () => {
+      const hexColors = {
+        '#ff00bb': 'ff00bb',
+        '#ccc': 'cccccc',
+        '#ababab': 'ababab',
+        abcabc: 'abcabc',
+      };
+      Object.keys(hexColors).forEach(key => {
+        color.setHex(key);
+        expect(color.hex).toEqual(hexColors[key]);
+        expect(color.hexString).toEqual(`#${hexColors[key]}`);
       });
     });
     xit('Can set HSL value with no alpha set', () => {

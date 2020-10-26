@@ -1,3 +1,5 @@
+import hexToRgb from './utils/hexToRgb';
+
 export default class Color {
   private _red: number;
   private _green: number;
@@ -8,6 +10,7 @@ export default class Color {
   private _lightness: number;
   private _brightness: number;
   private _hex: string;
+  private _hexa: string;
   constructor() {}
 
   // getters
@@ -51,10 +54,16 @@ export default class Color {
     };
   }
   public get hexString() {
-    return `#(${this._red},${this._green},${this._blue})`;
+    return `#${this._hex}`;
   }
   public get hex() {
     return this._hex;
+  }
+  public get hexaString() {
+    return `#${this._hexa}`;
+  }
+  public get hexa() {
+    return this._hexa;
   }
 
   public setRGB(r: number, g: number, b: number, a: number = 1) {
@@ -65,13 +74,10 @@ export default class Color {
     return this;
   }
 
-  public setHex(hex: string) {
-    const hexValueReg = /\w+/;
-    const values = hexValueReg.exec(hex);
-    if (!values) {
-      throw new Error('No valid value provided');
-    }
-    const [parsedHex] = values;
+  public setHex(hexInput: string) {
+    const { hex, hexa } = hexToRgb(hexInput);
+    this._hex = hex;
+    this._hexa = hexa;
   }
 
   public setHSL() {
