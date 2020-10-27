@@ -95,17 +95,31 @@ export default class Color {
   }
 
   public get rgbaString() {
-    return `rgb(${this._red}, ${this._green}, ${this._blue}, ${this._alpha})`;
-  }
-  public get hslString() {
-    return `hsl(${this._hue},${this._saturation},${this._lightness})`;
+    return `rgba(${this._red}, ${this._green}, ${this._blue}, ${this._alpha})`;
   }
   public get hsl() {
-    return {
-      hue: this._hue,
-      saturation: this._saturation,
-      lightness: this._lightness,
-    };
+    return [this._hue, this._saturation, this._lightness];
+  }
+  public get hslString() {
+    return `hsl(${this._hue}, ${this._saturation}, ${this._lightness})`;
+  }
+  public get hsla() {
+    return [this._hue, this._saturation, this._lightness, this._alpha];
+  }
+  public get hslaString() {
+    return `hsla(${this._hue}, ${this._saturation}, ${this._lightness}, ${this._alpha})`;
+  }
+  public get hsb() {
+    return [this._hue, this._saturation, this._brightness];
+  }
+  public get hsbString() {
+    return `hsb(${this._hue}, ${this._saturation}, ${this._brightness})`;
+  }
+  public get hsba() {
+    return [this._hue, this._saturation, this._brightness, this._alpha];
+  }
+  public get hsbaString() {
+    return `hsba(${this._hue}, ${this._saturation}, ${this._brightness}, ${this._alpha})`;
   }
   public get hexString() {
     return `#${this._hex}`;
