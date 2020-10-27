@@ -21,7 +21,7 @@ Import the `Color` object to your project
 and create a new instance of `Color`
 
 ```js
-import Color from '.../index.ts';
+import Color from ".../index.ts";
 const myColor = new Color();
 ```
 
@@ -36,3 +36,4 @@ myColor.setHex("")
 ## Read more
 
 [Color() class](docs/color-object.md)
+[Utilities](docs/utility-functions.md)
