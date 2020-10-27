@@ -1,6 +1,6 @@
-import prettifyHex from './utils/prettifyHex';
-import hexToRgb from './utils/hexToRgb';
-import rgbToHex from './utils/rgbToHex';
+import prettifyHex from "./utils/prettifyHex";
+import hexToRgb from "./utils/hexToRgb";
+import rgbToHex from "./utils/rgbToHex";
 
 export default class Color {
   private _red: number;
@@ -21,7 +21,7 @@ export default class Color {
 
   // SECTION Helper functions
   private calcFromRGB() {
-    // TODO calc hex
+    // ANCHOR calc hex
     const { hex, hexa } = rgbToHex(
       this._red,
       this._green,
@@ -35,7 +35,7 @@ export default class Color {
   }
 
   private calcFromHex() {
-    // TODO calc RGB
+    // ANCHOR calc RGB
     const { red, green, blue, alpha } = hexToRgb(this._hexa);
     this._red = red;
     this._green = green;
@@ -68,10 +68,6 @@ export default class Color {
     return this._blue;
   }
 
-  public get rgb() {
-    return [this._red, this._green, this._blue];
-  }
-
   public get hue() {
     return this._hue;
   }
@@ -86,6 +82,20 @@ export default class Color {
   }
   public get alpha() {
     return this._alpha;
+  }
+  public get rgb() {
+    return [this._red, this._green, this._blue];
+  }
+
+  public get rgbString() {
+    return `rgb(${this._red}, ${this._green}, ${this._blue})`;
+  }
+  public get rgba() {
+    return [this._red, this._green, this._blue, this._alpha];
+  }
+
+  public get rgbaString() {
+    return `rgb(${this._red}, ${this._green}, ${this._blue}, ${this._alpha})`;
   }
   public get hslString() {
     return `hsl(${this._hue},${this._saturation},${this._lightness})`;

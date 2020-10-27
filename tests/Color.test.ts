@@ -1,4 +1,5 @@
 import Color from '../src/index';
+import prettifyHex from '../src/utils/prettifyHex'
 
 describe('Test Color utility', () => {
   describe('Can store values and retrieve them', () => {
@@ -67,7 +68,7 @@ describe('Test Color utility', () => {
   });
   describe('Can store values with alpha values and retrieve them', () => {
     const color = new Color();
-    xit('Can set RGB value with alpha set', () => {
+    it('Can set RGB value with alpha set', () => {
       const rgbColors = [
         [255, 255, 255, 1],
         [100, 155, 234, 0.5],
@@ -77,19 +78,31 @@ describe('Test Color utility', () => {
       rgbColors.forEach(values => {
         const [r, g, b, a] = values;
         color.setRGB(r, g, b, a);
-        expect(color.red).toEqual(values[0]);
-        expect(color.green).toEqual(values[1]);
-        expect(color.blue).toEqual(values[2]);
-        expect(color.alpha).toEqual(values[3]);
-        expect(color.rgb).toEqual(values);
+        expect(color.red).toEqual(r);
+        expect(color.green).toEqual(g);
+        expect(color.blue).toEqual(b);
+        expect(color.alpha).toEqual(a);
+        expect(color.rgb).toEqual([r,g,b]);
+        expect(color.rgba).toEqual([r,g,b,a]);
+        expect(color.rgbString).toEqual(`rgb(${r}, ${g}, ${b})`);
+        expect(color.rgbaString).toEqual(`rgb(${r}, ${g}, ${b}, ${a})`);
       });
     });
-    xit('Can set HEX value with alpha values and retrieve them', () => {
-      const hexColors = ['#ff00bb00', '#cccf', '#abababff', 'abcabc00'];
-      hexColors.forEach(value => {
-        color.setHex(value);
-        expect(color.hex).toEqual(value);
-        // TODO convert alpha from HEX to BINARY and test it
+    it('Can set HEX value with alpha values and retrieve them', () => {
+      const hexColors = [
+        {val:'#ff00bbbb', hex: 'ff00bb', alpha: 187},
+        {val: '#cccc', hex: 'cccccc', alpha: 204},
+        {val: '#abababab',hex: 'ababab', alpha: 171},
+        {val: 'abcabcff', hex: 'abcabc', alpha: 255},
+        {val: '3333', hex: '333333', alpha: 51}
+      ];
+      hexColors.forEach(colorObj => {
+        color.setHex(colorObj.val);
+        const {hex, hexa} = prettifyHex(colorObj.val);
+        expect(color.hex).toEqual(colorObj.hex);
+        expect(color.hex).toEqual(hex);
+        expect(color.hexa).toEqual(hexa);
+        expect(color.alpha).toEqual(colorObj.alpha / 255);
       });
     });
     xit('Can set HSL value with with alpha values and retrieve them', () => {
