@@ -2,13 +2,13 @@ export default function rgbToHex(
   red: number,
   green: number,
   blue: number,
-  alpha: number
+  alpha: number = 1
 ) {
   const hex = [red, green, blue].reduce(
     (acc, curr) => acc + curr.toString(16),
-    ''
+    ""
   );
-  const aHex = (alpha * 255).toString(16) || 'ff';
+  const aHex = (alpha * 255).toString(16) || "ff";
 
   return {
     hex,

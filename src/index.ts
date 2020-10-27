@@ -2,6 +2,7 @@ import prettifyHex from "./utils/prettifyHex";
 import hexToRgb from "./utils/hexToRgb";
 import rgbToHex from "./utils/rgbToHex";
 
+export { hexToRgb, rgbToHex };
 export default class Color {
   private _red: number;
   private _green: number;
