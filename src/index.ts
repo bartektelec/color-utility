@@ -112,6 +112,7 @@ export default class Color {
 
   // SECTION Setter functions
   public setRGB(r: number, g: number, b: number, a: number = 1) {
+    // FIXME validation?
     this._red = r;
     this._green = g;
     this._blue = b;
@@ -121,6 +122,7 @@ export default class Color {
   }
 
   public setHex(hexInput: string) {
+    // FIXME validation
     const { hex, hexa } = prettifyHex(hexInput);
     this._hex = hex;
     this._hexa = hexa;
@@ -128,11 +130,23 @@ export default class Color {
     return this;
   }
 
-  public setHSL() {
-    // TODO
+  public setHSL(h: number, s: number, l: number, a: number = 1) {
+    // FIXME validation
+    this._hue = h;
+    this._saturation = s;
+    this._lightness = l;
+    this._alpha = a;
+    this.calcFromHSL();
+    return this;
   }
 
-  public setHSB() {
-    // TODO
+  public setHSB(h: number, s: number, b: number, a: number = 1) {
+    // FIXME validation
+    this._hue = h;
+    this._saturation = s;
+    this._brightness = b;
+    this._alpha = a;
+    this.calcFromHSB();
+    return this;
   }
 }

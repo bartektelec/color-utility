@@ -34,7 +34,7 @@ describe('Test Color utility', () => {
         expect(color.hexString).toEqual(`#${hexColors[key]}`);
       });
     });
-    xit('Can set HSL value with no alpha set', () => {
+    it('Can set HSL value with no alpha set', () => {
       const hslColors = [
         [360, 100, 100],
         [120, 50, 50],
@@ -42,24 +42,26 @@ describe('Test Color utility', () => {
       ];
       hslColors.forEach(value => {
         // TODO destructure values
-        color.setHSL(...value);
-        expect(color.hue).toEqual(value[0]);
-        expect(color.saturation).toEqual(value[1]);
-        expect(color.lightness).toEqual(value[2]);
+        const [hue, sat, light] = value;
+        color.setHSL(hue,sat,light);
+        expect(color.hue).toEqual(hue);
+        expect(color.saturation).toEqual(sat);
+        expect(color.lightness).toEqual(light);
       });
     });
-    xit('Can set HSB value with no alpha set', () => {
-      const hslColors = [
+    it('Can set HSB value with no alpha set', () => {
+      const hsbColors = [
         [360, 100, 100],
         [120, 50, 50],
         [20, 25, 25],
       ];
-      hslColors.forEach(value => {
+      hsbColors.forEach(value => {
         // TODO destructure values
-        color.setHSL(...value);
-        expect(color.hue).toEqual(value[0]);
-        expect(color.saturation).toEqual(value[1]);
-        expect(color.lightness).toEqual(value[2]);
+        const [hue,sat,bri] = value;
+        color.setHSB(hue,sat,bri);
+        expect(color.hue).toEqual(hue);
+        expect(color.saturation).toEqual(sat);
+        expect(color.brightness).toEqual(bri);
       });
     });
   });
@@ -98,7 +100,7 @@ describe('Test Color utility', () => {
       ];
       hslColors.forEach(value => {
         // TODO destructure values
-        color.setHSL(...value);
+        color.setHSL(1,2,3);
         expect(color.hue).toEqual(value[0]);
         expect(color.saturation).toEqual(value[1]);
         expect(color.lightness).toEqual(value[2]);
@@ -113,7 +115,7 @@ describe('Test Color utility', () => {
       ];
       hsbColors.forEach(value => {
         // TODO destructure values
-        color.setHSB(...value);
+        color.setHSB(1,2,3);
         expect(color.hue).toEqual(value[0]);
         expect(color.saturation).toEqual(value[1]);
         expect(color.brightness).toEqual(value[2]);
