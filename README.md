@@ -35,5 +35,5 @@ myColor.setHex("")
 
 ## Read more
 
-[Color() class](docs/color-object.md)
-[Utilities](docs/utility-functions.md)
+- [Color() class](docs/color-object.md)
+- [Utilities](docs/utility-functions.md)
