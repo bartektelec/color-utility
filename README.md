@@ -4,6 +4,8 @@ A utility module created to easily convert color values to different formats.
 
 Planned support for RGB, HEX, HSL, HSB, with or without alpha channel values.
 
+![tool demo animation](./docs/demo.gif)
+
 ## Currently supported formats
 
 - [x] RGB
