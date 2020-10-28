@@ -36,6 +36,7 @@ myColor.setHex("")
 ## Known issues and to-dos
 
 - [ ] Need more tests, it seems like converting RGB to HEX doesn't work as expected, has problems with double 0's
+- [ ] Min-max values
 - [ ] Values for hsl-saturation and hsb-saturation should be stored separately
 - [ ] Lacks conversion from HSL to RGB
 - [ ] Lacks conversion from HSB to RGB

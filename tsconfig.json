@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "es6",
-    "module": "commonjs",
+    "module": "es6",
     "lib": [
       "dom",
       "es6",
@@ -25,7 +25,7 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "resolveJsonModule": true,
-    "baseUrl": "."
+    "baseUrl": "./src"
   },
   "exclude": [
     "node_modules"
