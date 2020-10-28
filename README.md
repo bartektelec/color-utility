@@ -44,6 +44,8 @@ myColor.setHex("")
 - [ ] Utility function for hexToHsl and hexToHsb
 - [ ] Utility function for hslToRgb, hslToHex and hslToHsb
 - [ ] Utility function for hsbToRgb, hsbToHex and hsbToHsl
+- [ ] Hsl and Hsb-String getters should use % for S-L/B values
+- [ ] Add alphaPrecent getter
 
 ## Read more
 
