@@ -31,5 +31,5 @@ export default function rgbToHsl(r: number, g: number, b: number) {
   if (H < 0) {
     H += 360;
   }
-  return { hsl: [H, S, L] };
+  return { hue: H, saturation: S, lightness: L };
 }

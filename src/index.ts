@@ -24,8 +24,11 @@ export default class Color {
   // SECTION Helper calculate and set one format
 
   private rgbToHsl() {
-    const { hsl } = rgbToHsl(this._red, this._green, this._blue);
-    const [hue, saturation, lightness] = hsl;
+    const { hue, saturation, lightness } = rgbToHsl(
+      this._red,
+      this._green,
+      this._blue
+    );
     this._hue = hue;
     this._saturation = saturation;
     this._lightness = lightness;
