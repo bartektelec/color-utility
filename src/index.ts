@@ -1,6 +1,7 @@
-import prettifyHex from "./utils/prettifyHex";
-import hexToRgb from "./utils/hexToRgb";
-import rgbToHex from "./utils/rgbToHex";
+import prettifyHex from './utils/prettifyHex';
+import hexToRgb from './utils/hexToRgb';
+import rgbToHex from './utils/rgbToHex';
+import rgbToHsl from './utils/rgbToHsl';
 
 export { hexToRgb, rgbToHex };
 export default class Color {
@@ -20,9 +21,25 @@ export default class Color {
     // TODO make able to set value in constructor
   }
 
-  // SECTION Helper functions
-  private calcFromRGB() {
-    // ANCHOR calc hex
+  // SECTION Helper calculate and set one format
+
+  private rgbToHsl() {
+    const { hsl } = rgbToHsl(this._red, this._green, this._blue);
+    const [hue, saturation, lightness] = hsl;
+    this._hue = hue;
+    this._saturation = saturation;
+    this._lightness = lightness;
+  }
+
+  private hexToRgb() {
+    const { red, green, blue, alpha } = hexToRgb(this._hexa);
+    this._red = red;
+    this._green = green;
+    this._blue = blue;
+    this._alpha = alpha;
+  }
+
+  private rgbToHex() {
     const { hex, hexa } = rgbToHex(
       this._red,
       this._green,
@@ -31,28 +48,28 @@ export default class Color {
     );
     this._hex = hex;
     this._hexa = hexa;
-    // TODO calc hsl
+  }
+
+  // SECTION Helper functions
+  private convertRGB() {
+    this.rgbToHex();
+    this.rgbToHsl();
     // TODO calc hsb
   }
 
-  private calcFromHex() {
-    // ANCHOR calc RGB
-    const { red, green, blue, alpha } = hexToRgb(this._hexa);
-    this._red = red;
-    this._green = green;
-    this._blue = blue;
-    this._alpha = alpha;
-    // TODO calc hsl
+  private convertHex() {
+    this.hexToRgb();
+    this.rgbToHsl();
     // TODO calc hsb
   }
 
-  private calcFromHSL() {
-    // TODO calc RGB
+  private convertHSL() {
+    // TODO calc to RGB
     // TODO calc Hex
     // TODO calc hsb
   }
 
-  private calcFromHSB() {
+  private convertHSB() {
     // TODO calc RGB
     // TODO calc Hex
     // TODO calc HSL
@@ -142,7 +159,7 @@ export default class Color {
     this._green = g;
     this._blue = b;
     this._alpha = a;
-    this.calcFromRGB();
+    this.convertRGB();
     return this;
   }
 
@@ -151,7 +168,7 @@ export default class Color {
     const { hex, hexa } = prettifyHex(hexInput);
     this._hex = hex;
     this._hexa = hexa;
-    this.calcFromHex();
+    this.convertHex();
     return this;
   }
 
@@ -161,7 +178,7 @@ export default class Color {
     this._saturation = s;
     this._lightness = l;
     this._alpha = a;
-    this.calcFromHSL();
+    this.convertHSL();
     return this;
   }
 
@@ -171,7 +188,7 @@ export default class Color {
     this._saturation = s;
     this._brightness = b;
     this._alpha = a;
-    this.calcFromHSB();
+    this.convertHSB();
     return this;
   }
 }
