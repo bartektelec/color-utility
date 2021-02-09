@@ -1,4 +1,4 @@
-# color-utility
+# color-utils
 
 A utility module created to easily convert color values to different formats.
 
